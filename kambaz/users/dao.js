@@ -1,12 +1,11 @@
 import db from "../database/index.js";
 import { v4 as uuidv4 } from "uuid";
 let { users } = db;
-// export const createUser = (user) => {
-//     const newUser = { ...user, _id: uuidv4() };
-//     users = [...users, newUser];
-//     return newUser;
-// };
-export const createUser = (user) => (users = [...users, { ...user, _id: uuidv4() }]);
+export const createUser = (user) => {
+    const newUser = { ...user, _id: uuidv4() };
+    users = [...users, newUser];
+    return newUser;
+};
 export const findAllUsers = () => users;
 export const findUserById = (userId) => users.find((user) => user._id === userId);
 export const findUserByUsername = (username) => users.find((user) => user.username === username);
