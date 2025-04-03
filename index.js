@@ -5,6 +5,7 @@ import Lab5 from "./lab5/index.js";
 import UserRoutes from "./kambaz/users/routes.js"
 import CourseRoutes from "./kambaz/courses/routes.js";
 import ModuleRoutes from "./kambaz/modules/routes.js";
+import AssignmentRoutes from "./kambaz/assignments/routes.js";
 import cors from "cors";
 import session from "express-session";
 
@@ -37,6 +38,7 @@ Lab5(app);
 UserRoutes(app);
 CourseRoutes(app);
 ModuleRoutes(app);
+AssignmentRoutes(app);
 
 app.listen(4000);
 
