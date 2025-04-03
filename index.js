@@ -4,6 +4,7 @@ import Hello from "./hello.js";
 import Lab5 from "./lab5/index.js";
 import UserRoutes from "./kambaz/users/routes.js"
 import CourseRoutes from "./kambaz/courses/routes.js";
+import ModuleRoutes from "./kambaz/modules/routes.js";
 import cors from "cors";
 import session from "express-session";
 
@@ -35,6 +36,7 @@ Hello(app);
 Lab5(app);
 UserRoutes(app);
 CourseRoutes(app);
+ModuleRoutes(app);
 
 app.listen(4000);
 
