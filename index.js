@@ -3,6 +3,8 @@ import express from "express";
 import Hello from "./Hello.js";
 import Lab5 from "./Lab5/index.js";
 import UserRoutes from "./kambaz/users/routes.js"
+import CourseRoutes from "./kambaz/courses/routes.js";
+
 import cors from "cors";
 import session from "express-session";
 
@@ -26,12 +28,14 @@ if (process.env.NODE_ENV !== "development") {
         domain: process.env.NODE_SERVER_DOMAIN,
     };
 }
+
 app.use(session(sessionOptions));
 app.use(express.json());
 
 Hello(app);
 Lab5(app);
 UserRoutes(app);
+CourseRoutes(app);
 
 app.listen(4000);
 
