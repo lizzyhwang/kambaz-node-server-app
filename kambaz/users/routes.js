@@ -3,8 +3,14 @@ import * as courseDao from "../courses/dao.js";
 import * as enrollmentsDao from "../enrollments/dao.js";
 
 export default function UserRoutes(app) {
-    const createUser = (req, res) => { };
-    const deleteUser = (req, res) => { };
+    const createUser = async (req, res) => {
+        const user = await dao.createUser(req.body);
+        res.json(user);
+    };
+    const deleteUser = async (req, res) => {
+        const status = await dao.deleteUser(req.params.userId);
+        res.json(status);
+    };
     const findAllUsers = async (req, res) => {
         const { role, name } = req.query;
         if (role) {
@@ -26,12 +32,14 @@ export default function UserRoutes(app) {
         res.json(user);
     };
 
-    const updateUser = (req, res) => {
+    const updateUser = async (req, res) => {
         const userId = req.params.userId;
         const userUpdates = req.body;
-        dao.updateUser(userId, userUpdates);
-        const currentUser = dao.findUserById(userId);
-        req.session["currentUser"] = currentUser;
+        await dao.updateUser(userId, userUpdates);
+        const currentUser = req.session["currentUser"];
+        if (currentUser && currentUser._id === userId) {
+            req.session["currentUser"] = { ...currentUser, ...userUpdates };
+        }
         res.json(currentUser);
     };
 
