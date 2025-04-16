@@ -4,6 +4,14 @@ import * as assignmentsDao from "../assignments/dao.js"
 import * as enrollmentsDao from "../enrollments/dao.js";
 
 export default function CourseRoutes(app) {
+    const findUsersForCourse = async (req, res) => {
+        const { cid } = req.params;
+        const users = await enrollmentsDao.findUsersForCourse(cid);
+        res.json(users);
+    };
+
+    app.get("/api/courses/:cid/users", findUsersForCourse);
+
     app.get("/api/courses", async (req, res) => {
         const courses = await dao.findAllCourses();
         res.send(courses);
