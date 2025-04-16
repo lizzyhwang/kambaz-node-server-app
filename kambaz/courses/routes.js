@@ -9,7 +9,6 @@ export default function CourseRoutes(app) {
         const users = await enrollmentsDao.findUsersForCourse(cid);
         res.json(users);
     };
-
     app.get("/api/courses/:cid/users", findUsersForCourse);
 
     app.get("/api/courses", async (req, res) => {
@@ -55,19 +54,19 @@ export default function CourseRoutes(app) {
         res.send(newModule);
     });
 
-    app.get("/api/courses/:courseId/assignments", (req, res) => {
+    app.get("/api/courses/:courseId/assignments", async (req, res) => {
         const { courseId } = req.params;
-        const modules = assignmentsDao.findAssignmentsForCourse(courseId);
-        res.json(modules);
+        const assignments = await assignmentsDao.findAssignmentsForCourse(courseId);
+        res.json(assignments);
     });
 
-    app.post("/api/courses/:courseId/assignments", (req, res) => {
+    app.post("/api/courses/:courseId/assignments", async (req, res) => {
         const { courseId } = req.params;
         const assignment = {
             ...req.body,
             course: courseId,
         };
-        const newAssignment = assignmentsDao.createAssignment(assignment);
+        const newAssignment = await assignmentsDao.createAssignment(assignment);
         res.send(newAssignment);
     });
 
