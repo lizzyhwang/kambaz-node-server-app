@@ -13,7 +13,7 @@ const schema = new mongoose.Schema(
         },
         points: Number,
         assignment_group: {
-            type: Number,
+            type: String,
             enum: ["ASSIGNMENTS", "QUIZ", "EXAM", "PROJECT"],
             default: "QUIZ",
         },
@@ -29,9 +29,9 @@ const schema = new mongoose.Schema(
         one_question_at_a_time: { type: Boolean, default: true },
         webcam_required: { type: Boolean, default: false },
         lock_after_answering: { type: Boolean, default: false },
-        due_date: String,
-        available_date: String,
-        until_date: String,
+        due_date: Date,
+        available_date: Date,
+        until_date: Date,
 
     },
     { collection: "quizzes" }
