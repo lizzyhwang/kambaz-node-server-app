@@ -32,6 +32,7 @@ const schema = new mongoose.Schema(
         due_date: Date,
         available_date: Date,
         until_date: Date,
+        published: { type: Boolean, default: false },
 
     },
     { collection: "quizzes" }
