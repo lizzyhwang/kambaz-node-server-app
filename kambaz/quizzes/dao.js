@@ -5,6 +5,10 @@ export function findQuizzesForCourse(courseId) {
     return model.find({ course: courseId });
 }
 
+export function findQuizById(quizId) {
+    return model.findById(quizId);
+}
+
 export function createQuiz(quiz) {
     const newQuiz = { ...quiz, _id: uuidv4() };
     return model.create(newQuiz);
