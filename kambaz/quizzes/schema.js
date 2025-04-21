@@ -21,10 +21,8 @@ const schema = new mongoose.Schema(
         time_limit: { type: Number, default: 20 },
         multiple_attempts: { type: Boolean, default: false },
         how_many_attempts: { type: Number, default: 1 },
-        show_correct_answers: {
-            enabled: Boolean,
-            when_to_show: String,
-        },
+        show_correct_answers: { type: Boolean, default: true },
+        when_to_show: Date,
         access_code: { type: String, default: "" },
         one_question_at_a_time: { type: Boolean, default: true },
         webcam_required: { type: Boolean, default: false },
