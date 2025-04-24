@@ -8,6 +8,7 @@ import CourseRoutes from "./kambaz/courses/routes.js";
 import ModuleRoutes from "./kambaz/modules/routes.js";
 import AssignmentRoutes from "./kambaz/assignments/routes.js";
 import QuizzesRoutes from "./kambaz/quizzes/routes.js";
+import QuestionRoutes from "./kambaz/questions/routes.js";
 import cors from "cors";
 import session from "express-session";
 
@@ -45,6 +46,7 @@ CourseRoutes(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
 QuizzesRoutes(app);
+QuestionRoutes(app);
 
 app.listen(4000);
 
