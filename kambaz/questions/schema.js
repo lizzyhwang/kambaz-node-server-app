@@ -3,14 +3,14 @@ import mongoose from "mongoose";
 const schema = new mongoose.Schema(
     {
         _id: String,
-        title: String,
-        question: String,
+        title: { type: String, default: "Question Title" },
+        question: { type: String, default: "Question" },
         quiz: { type: String, ref: "QuizModel", required: true },
-        type: Number, // 0=MC, 1=T/F, 2=fill-in-the-blank
-        points: Number,
+        type: { type: Number, default: 0 },
+        points: { type: Number, default: 1 },
         choices: [String],
         answer: String,
-        isTrue: Boolean
+        isTrue: { type: Boolean, default: false }
     },
     { collection: "questions" }
 );

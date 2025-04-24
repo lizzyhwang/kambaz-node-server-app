@@ -19,6 +19,5 @@ export function deleteQuiz(quizId) {
 }
 
 export function updateQuiz(quizId, quizUpdates) {
-    console.log(quizUpdates);
     return model.updateOne({ _id: quizId }, { $set: quizUpdates });
 }

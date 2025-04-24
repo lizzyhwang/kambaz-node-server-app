@@ -10,6 +10,7 @@ export function findQuestionById(questionId) {
 }
 
 export function createQuestion(question) {
+    console.log("yall");
     const newQuestion = { ...question, _id: uuidv4() };
     return model.create(newQuestion);
 }
@@ -19,6 +20,5 @@ export function deleteQuestion(questionId) {
 }
 
 export function updateQuestion(questionId, questionUpdates) {
-    console.log(questionUpdates);
     return model.updateOne({ _id: questionId }, { $set: questionUpdates });
 }
