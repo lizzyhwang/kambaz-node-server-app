@@ -9,7 +9,8 @@ const schema = new mongoose.Schema(
         type: Number, // 0=MC, 1=T/F, 2=fill-in-the-blank
         points: Number,
         choices: [String],
-        answer: Boolean | String,
+        answer: String,
+        isTrue: Boolean
     },
     { collection: "questions" }
 );
